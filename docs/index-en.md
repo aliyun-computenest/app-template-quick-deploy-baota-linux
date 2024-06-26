@@ -79,11 +79,11 @@
 <ol>
 <li> Click <a href = "https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-8b13e60726a64ffbabc9"> Deployment Link </a> to go to the Service Instance Deployment page. </li>
 <li> Select the target ECS instance and click Next: Confirm Order.
-<img src="1.jpg" width="100%" align="bottom"/></li>
+<img src="en-1.jpg" width="100%" align="bottom"/></li>
 <li> Click Create Now and wait for the service instance to be created.
-<img src="2.jpg" width="100%" align="bottom"/></li>
+<img src="en-2.jpg" width="100%" align="bottom"/></li>
 <li> After the service instance is created, go to the service instance details page. The login information of the pagoda panel can be obtained on the overview page.
-<img src="5.png" width="100%" align="bottom"/></li>
+<img src="en-3.jpg" width="100%" align="bottom"/></li>
 <li> click the address of the external network panel to log in to the pagoda panel.
 <img src="6.jpg" width="100%" align="bottom"/></li>
 </ol>
@@ -97,9 +97,9 @@
 <ol>
 <li> Click <a href = "https://computenest.console.aliyun.com/service/instance/create/cn-hangzhou?type=user&ServiceId=service-8b13e60726a64ffbabc9"> Deployment Link </a> to go to the Service Instance Deployment page. </li>
 <li> Select the new ECS instance and configure the parameters according to the interface prompts. After the configuration is complete, click Next: Confirm Order.
-<img src="3.jpg" width="100%" align="bottom"/></li>
+<img src="en-4.jpg" width="100%" align="bottom"/></li>
 <li> Click Create Now and wait for the service instance to be created.
-<img src="4.jpg" width="100%" align="bottom"/></li>
+<img src="en-5.jpg" width="100%" align="bottom"/></li>
 <li> After the service instance is created, go to the service instance details page. On the overview page, you can obtain the login information of the pagoda panel. Click the address of the external network panel to log in to the pagoda panel.
 <img src="6.jpg" width="100%" align="bottom"/></li>
 </ol>
