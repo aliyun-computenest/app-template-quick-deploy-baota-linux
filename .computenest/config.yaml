@@ -1,0 +1,47 @@
+Service:
+  RegionId: cn-hangzhou
+  DeployType: ros
+  DeployMetadata:
+    ServiceInstanceNameRule:
+      Prefix: baota-
+    SupplierDeployMetadata:
+      ArtifactRelation:
+        - 'centos_7':
+            ArtifactId: ${Artifact.EcsImage.ArtifactId}
+            ArtifactVersion: ${Artifact.EcsImage.ArtifactVersion}
+        - 'm-bp1jalhiu38gaav43r8y':
+            ArtifactId: artifact-4343f2942b53417fa1bf
+            ArtifactVersion: "2"
+    TemplateConfigs:
+      - Name: 选择ECS实例（Windows）
+        Url: 'ros_templates/template-select-ecs-windows.yaml'
+      - Name: 选择ECS实例（Linux）
+        Url: 'ros_templates/template-select-ecs-windows.yaml'
+      - Name: 新建ECS实例
+        Url: 'ros_templates/template-create-ecs-linux.yaml'
+  ServiceType: private
+  ServiceInfo:
+    Locale: zh-CN
+    ShortDescription: 1panel deploy
+    Image: 'resources/icons/service_logo.jpg'
+Artifact:
+  EcsImage:
+    ArtifactType: EcsImage
+    ArtifactName: BT_Linux
+    Description: 宝塔Linux镜像
+    ArtifactProperty:
+      RegionId: ${ImageBuilder.EcsImage.RegionId}
+      ImageId: ${ImageBuilder.EcsImage.SourceImageId}
+ImageBuilder:
+  EcsImage:
+    RegionId: ap-southeast-1
+    # 使用最新的LTS版本Alibaba Cloud Linux
+    SourceImageId: aliyun_3_x64_20G_alibase_20240819.vhd
+    SystemDiskSize: 40
+    InstanceType: ecs.c6.large
+    InternetMaxBandwidthOut: 10
+    CommandType: RunShellScript
+    Timeout: 10800
+    CommandContent: |-
+        #!/bin/bash
+        url=https://download.bt.cn/install/install_panel.sh;if [ -f /usr/bin/curl ];then curl -sSO $url;else wget -O install_panel.sh $url;fi;bash install_panel.sh ed8484bec

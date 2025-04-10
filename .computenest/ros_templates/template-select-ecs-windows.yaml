@@ -1,0 +1,47 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Description:
+  zh-cn: 单台ECS实例安装宝塔Windows面板
+Parameters:
+  InstanceId:
+    Type: String
+    Label:
+      en: Select Running Linux ECS Instance with public network access enabled
+      zh-cn: 选择公网Windows实例
+    Description:
+      en: <b><font color='red'><ul><ul>Note:<ol><li>The latest panel only supports Windows Server 2008 R2/2012/2016/2019/2022, 64-bit system (Simplified Chinese), and no other environment is installed</li><li>Security group opens port 8888</li><li>No other environments such as Apache/Nginx/php/MySQL have been installed, duplicate installation will fail< /li></ol><ul></font></b>
+      zh-cn: <b><font color='red'>要求:<ol><li>最新面板仅支持Windows Server 2008 R2/2012/2016/2019/2022，64位系统（中文简体），且未安装其它环境</li><li>可以访问公网</li><li>ECS实例在运行中，如实例刚启动请稍等片刻</li><li>安全组打开8888端口</li></ol><ul></font></b>
+    AssociationProperty: ALIYUN::ECS::Instance::InstanceId
+    AssociationPropertyMetadata:
+      OnlyShowSelector: true
+      RegionId: ${RegionId}
+      Status: Running
+      OSType: windows
+      NetworkType: vpc
+      DisabledStatus: true
+Resources:
+  InstanceRunCommandForWindows:
+    Type: ALIYUN::ECS::RunCommand
+    Properties:
+      Type: RunPowerShellScript
+      Sync: true
+      InstanceIds:
+        - Ref: InstanceId
+      Timeout: 1800
+      CommandContent: |
+        $zipUrl = "https://download.bt.cn/win/panel/BtSoft.zip"
+        $zipPath = "C:\Users\Administrator\Desktop\BtSoft.zip"
+        $extractPath = "C:\Users\Administrator\Desktop\"
+
+        # 下载 ZIP 文件
+        Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
+
+        # 解压缩 ZIP 文件
+        Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
+
+        # 删除 ZIP 文件
+        Remove-Item -Path $zipPath -Force
+Outputs:
+  面板地址:
+    Description:
+      zh-cn: 面板地址
+    Value: 宝塔面板已下载到桌面，请连接ECS一键安装
